@@ -14,17 +14,21 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
     // console.log(req.body.City)
 
-    // var city = req.body.City;
+     var city = req.body.City;
+     var APP_ID = "8a99df7bf7ef4a4a202732c392b2d240"
 
     // var options = {
         
     // }
-    var url = "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22"
+    var url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APP_ID}`
     request(url, function(err, response, body){
         //console.log(body);
+       
         var data = JSON.parse(body)
         var main = data.weather[0].main;
         console.log(main)
+        res.write(`<p>The current weather in ${city} 
+        is ${main}`)
     })
 })
 
