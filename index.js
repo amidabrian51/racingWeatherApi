@@ -21,7 +21,10 @@ app.post("/", function(req, res){
     // }
     var url = "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22"
     request(url, function(err, response, body){
-        console.log(response);
+        //console.log(body);
+        var data = JSON.parse(body)
+        var main = data.weather[0].main;
+        console.log(main)
     })
 })
 
