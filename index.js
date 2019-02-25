@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const request = require("request");
+const ejs = require("ejs");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.post("/", function(req, res){
        
         var data = JSON.parse(body)
         var main = data.weather[0].main;
+        //var temp = data.main.temp
         console.log(main)
         res.write(`<p>The current weather in ${city} 
         is ${main}`)
