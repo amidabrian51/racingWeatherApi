@@ -3,12 +3,16 @@ const bodyparser = require("body-parser");
 const request = require("request");
 const ejs = require("ejs");
 
+const homeStartingContent = "This is a really cool site about formula 1 weather"
+
 const app = express();
+app.set('view engine', 'ejs');
 
 app.use(bodyparser.urlencoded({extended: true}))
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html")
+    //res.sendFile(__dirname + "/index.html")
+    res.render('home',{startingContent: homeStartingContent})
 
 });
 
